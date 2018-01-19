@@ -1,10 +1,10 @@
 import React from 'react';
-import FetchData from './FetchData'
+import ShowData from './ShowData'
 
 const UserData = () => {
     return(
        
-        <FetchData />
+        <ShowData />
     )
 }
 
