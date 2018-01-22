@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import { Icon, Menu, Table } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import { connect } from 'react-redux'
-import {saveData} from '../actions'
-import {getData} from '../getData'
-
+import {getData} from '../actions'
+import { getUserData } from '../reducers/addData'
 
 const mapStateToProps = (state = []) => {
-  return {...state};
+  return {
+    userData: getUserData(state)
+  };
 }
 
 
@@ -15,12 +16,13 @@ class ShowData extends Component {
 
   componentWillMount() {
     const {dispatch} = this.props
-    dispatch (saveData())
+    dispatch (getData())
   }
 
     eachUser = () => {
-        const data = getData()
-        console.log(data)
+      const { userData } = this.props
+        console.log(this.props) 
+        const data = userData
        return data.map((value,index) => {
             return ( 
             <Table.Row key={index}>
